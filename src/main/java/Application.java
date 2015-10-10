@@ -14,10 +14,10 @@ public class Application {
 		String filename1 = "exmp1";
 		String filename2 = "exmp2";
 
-		List<String> language1 = findLanguage(filename1);
-		List<String> language2 = findLanguage(filename2);
+		Machine mach1 = new Machine(filename1);
+		Machine mach2 = new Machine(filename2);
 
-		boolean similar = compareLanguages(language1, language2);
+		boolean similar = true;
 
  		if (similar) {
 			System.out.println("Machines are equivalent");
@@ -26,39 +26,4 @@ public class Application {
 		}
 	}
 
-	private static List<String> findLanguage(String filename) {
-		try {
-			Scanner file = new Scanner(new FileReader(filename));
-			int alphabet = file.nextInt();
-			int numOfStates = file.nextInt();
-			int firstState = file.nextInt();
-			int numOfLastStates = file.nextInt();
-			int[] lastState = new int[numOfLastStates];
-			for (int i = 0; i < numOfLastStates; i++) {
-				lastState[i] = file.nextInt();
-			}
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		List<String> language = new ArrayList<String>();
-		return language;
-	}
-
-	private String findWord(int curState, String filename, String curWord) {
-		try {
-			Scanner file = new Scanner(new FileReader(filename));
-			
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		return curWord;
-	}
-
-	private static boolean compareLanguages(List<String> language1, List<String> language2) {
-		Collections.sort(language1);
-		Collections.sort(language2);
-		return language1.equals(language2);
-	}
 }
